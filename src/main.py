@@ -87,13 +87,14 @@ if __name__ == '__main__':
             pass
         case 2:
             # one argument
-            infile = sys.argv[1]
+            infile = open(sys.argv[1], 'r')
         case 3:
             # two arguments
-            infile, outfile = sys.argv[1], sys.argv[2]
+            infile, outfile = open(sys.argv[1], 'r'), open(sys.argv[2], 'w')
         case _:
             # more than two arguments; that is an error
-            sys.exit("Too many arguments given.")
+            print("Too many arguments.", file=sys.stderr)
+            sys.exit(1)
 
     # Process the input, one line at a time.
     for line in infile:
@@ -103,7 +104,8 @@ if __name__ == '__main__':
         aa = translate_dna(line)
         if aa is None:
             # Something went wrong!
-            sys.exit(f"Could not translate '{line}'.")
+            print(f"Could not translate '{line}'.", file=sys.stderr)
+            sys.exit(1)
         # If everthing went well, we write the result to the output
         print(aa, file=outfile)
 
