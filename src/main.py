@@ -103,8 +103,7 @@ if __name__ == '__main__':
         aa = translate_dna(line)
         if aa is None:
             # Something went wrong!
-            print(f"Could not translate '{line}'.", file=sys.stderr)
-            sys.exit(1)
+            sys.exit(f"Could not translate '{line}'.")
         # If everthing went well, we write the result to the output
         print(aa, file=outfile)
 
