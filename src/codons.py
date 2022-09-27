@@ -71,6 +71,8 @@ def translate_codons(codons: list[str]) -> list[str]:
     while j < len(codons):
         if len(codons[j]) % 3 != 0:
             return None
+        if codons[j].upper() not in CODON_MAP.keys():
+            return None
         else:
             codons[j] = CODON_MAP[codons[j].upper()]
             j += 1
