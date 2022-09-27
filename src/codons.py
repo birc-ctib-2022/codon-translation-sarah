@@ -100,4 +100,7 @@ def translate_dna(dna: str) -> str:
     else:
         codons = split_codons(dna)
         amino_acids = translate_codons(codons)
-        return ''.join(amino_acids)
+        if None not in amino_acids:
+            return ''.join(amino_acids)
+        else:
+            return None
